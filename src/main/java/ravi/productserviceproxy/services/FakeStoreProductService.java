@@ -5,9 +5,9 @@ import ravi.productserviceproxy.models.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface FakeStoreProductService {
     List<Product> getAllProducts();
-    String getSingleProduct(Long productId);
+    Product getSingleProduct(Long productId);
     Product addNewProduct(ProductDto productDto);
     Product updateProduct(Long productId, ProductDto productDto);
     String deleteProduct(Long productId);

@@ -3,6 +3,7 @@ package ravi.productserviceproxy.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import ravi.productserviceproxy.models.Categories;
 import ravi.productserviceproxy.models.Product;
 @Getter
 @Setter
