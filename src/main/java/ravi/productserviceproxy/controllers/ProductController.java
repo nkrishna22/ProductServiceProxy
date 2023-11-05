@@ -5,8 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import ravi.productserviceproxy.clients.IClientProductDto;
+import ravi.productserviceproxy.clients.fakestore.dto.FakeStoreProductDto;
 import ravi.productserviceproxy.dto.ProductDto;
+import ravi.productserviceproxy.models.Categories;
 import ravi.productserviceproxy.models.Product;
+import ravi.productserviceproxy.models.Ratings;
 import ravi.productserviceproxy.services.FakeStoreProductServiceImpl;
 
 import java.util.List;
@@ -43,8 +47,23 @@ public class ProductController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Product> addNewProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity<Product> addNewProduct(@RequestBody FakeStoreProductDto productDto) {
         Product product = this.productService.addNewProduct(productDto);
+        ResponseEntity<Product> responseEntity = new ResponseEntity<>(product, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @PatchMapping("/{productId}")
+    public ResponseEntity<Product> patchProduct(@PathVariable("productId") Long productId, @RequestBody FakeStoreProductDto productDto) {
+
+        Product product1 = this.productService.patchProduct(productId, productDto);
+        ResponseEntity<Product> responseEntity = new ResponseEntity<>(product1, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable("productId") Long productId) {
+        Product product = this.productService.deleteProduct(productId);
         ResponseEntity<Product> responseEntity = new ResponseEntity<>(product, HttpStatus.OK);
         return responseEntity;
     }

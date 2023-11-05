@@ -3,10 +3,11 @@ package ravi.productserviceproxy.models;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class Ratings extends BaseModel{
-    private double rate;
-    private double count;
+public class Products extends BaseModel{
+    private long productId;
+    private int quantity;
 }
